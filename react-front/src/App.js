@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import AudioRecorder from './components/AudioRecorder';
 
 function App() {
+  const [transcription, setTranscription] = useState('');
+  const [translation, setTranslation] = useState('');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>STT + Translate Demo</h1>
+      <AudioRecorder 
+        onTranscription={(text) => setTranscription(text)}
+        onTranslation={(text) => setTranslation(text)}
+      />
     </div>
   );
 }
