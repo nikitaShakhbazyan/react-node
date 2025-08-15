@@ -29,10 +29,7 @@ const AudioRecorder = () => {
       formData.append("file", blob, "audio.webm");
 
       try {
-        const res = await axios.post("http://localhost:5000/transcribe", formData, {
-          headers: { "Content-Type": "multipart/form-data" },
-        });
-
+        const res = await axios.post("http://localhost:5001/transcribe", formData);
         setTranscript(res.data.transcript);
         setTranslation(res.data.translation);
       } catch (err) {
